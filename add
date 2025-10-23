@@ -1,0 +1,6 @@
+#!/etc/profiles/per-user/cyrus/bin/bash
+
+git add .
+xargs -a .git_add_ignore --no-run-if-empty git restore --staged
+xargs -a .git_add_ignore --no-run-if-empty git add -N
+git status

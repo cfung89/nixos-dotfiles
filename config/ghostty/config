@@ -1,0 +1,16 @@
+# General
+gtk-titlebar = false
+shell-integration-features = no-cursor,sudo,no-title
+# copy-on-select = clipboard
+
+# Styles
+# font-family = "Hack Nerd Font"
+# theme = MistyRose
+font-size = 18
+font-feature = -calt -dlig -liga
+adjust-cell-height = 5
+cursor-opacity = 1
+
+# Keybinds
+keybind = alt+g>f=toggle_fullscreen
+keybind = alt+g>r=reload_config
