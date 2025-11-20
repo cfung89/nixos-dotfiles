@@ -10,9 +10,11 @@
 
   security.polkit.enable = true;
   security.pam.services.swaylock = { };
+  services.seatd.enable = true;
   services.dbus.enable = true;
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
   programs.dconf.enable = true;
+  programs.nix-ld.enable = true;
   hardware.graphics.enable = true; # GPU acceleration
 
   # Networking
@@ -27,15 +29,16 @@
   # User
   users.users.cyrus = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "seat" ];
     packages = with pkgs; [ tree ];
   };
 
   # Settings for flameshot
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
     config.common.default = "*";
+    configPackages = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
   # Audio
@@ -54,6 +57,12 @@
   # Default browser
   programs.firefox.enable = true;
 
+  documentation.man.enable = true;
+  systemd.tmpfiles.rules = [
+    "d /var/cache/man 0755 root root -"
+    "d /var/cache/man/nixos 0755 root root -"
+  ];
+
   # SSH
   services.openssh.enable = true;
 
@@ -63,20 +72,20 @@
 
   # services.getty.autologinUser = "cyrus";
 
-  # Greetd
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.sway}/bin/sway";
-        user = "cyrus";
-      };
-    };
-  };
-  environment.etc."greetd/environments".text = ''
-    sway
-    bash
-  '';
+  # # Greetd
+  # services.greetd = {
+  #   enable = true;
+  #   settings = {
+  #     default_session = {
+  #       command = "${pkgs.sway}/bin/sway";
+  #       user = "cyrus";
+  #     };
+  #   };
+  # };
+  # environment.etc."greetd/environments".text = ''
+  #   sway
+  #   bash
+  # '';
 
   # Set up num lock by default on tty
   systemd.services.numLockOnTty = {
@@ -91,7 +100,11 @@
     };
   };
 
-  # System packages
+  environment.variables = {
+    XCURSOR_THEME = "Adwaita";
+    XCURSOR_SIZE = "24";
+  };
+
   environment.systemPackages = with pkgs; [
     vim
     foot
@@ -99,11 +112,15 @@
     libreoffice
     adwaita-icon-theme
     xorg.xcursorthemes
+    man-db
+    numlockx
+    zip
+    unzip
   ];
 
-  environment.variables = {
-    XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
+  fonts = {
+    packages = with pkgs; [ noto-fonts-emoji ];
+    fontconfig.enable = true;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

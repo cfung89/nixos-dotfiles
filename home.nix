@@ -9,6 +9,7 @@ let
     tmux = "tmux";
     ghostty = "ghostty";
     waybar = "waybar";
+    rofi = "rofi";
   };
   flameshot-wlr = pkgs.flameshot.override { enableWlrSupport = true; };
 in {
@@ -17,6 +18,7 @@ in {
     ./modules/sway.nix
     ./modules/swaylock.nix
     ./modules/swayidle.nix
+    ./modules/languages.nix
   ];
 
   home.username = "cyrus";
@@ -29,6 +31,7 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     SSH_ASKPASS = "";
+    MANPATH = "${pkgs.man-db}/share/man:${pkgs.man-pages}/share/man";
   };
   home.packages = [
     pkgs.cargo
@@ -39,8 +42,12 @@ in {
     pkgs.gcc
     pkgs.ghostty
     pkgs.htop
+    pkgs.jdk
+    pkgs.luajit
     pkgs.neovim
     pkgs.nodejs
+    pkgs.python3
+    pkgs.obsidian
     pkgs.ripgrep
     pkgs.signal-desktop
     pkgs.tmux
@@ -58,7 +65,11 @@ in {
     enable = true;
     package = pkgs.brave;
     extensions = [ ];
-    commandLineArgs = [ "--disable-features=WebRtcAllowInputVolumeAdjustment" ];
+    commandLineArgs = [
+      "--disable-features=WebRtcAllowInputVolumeAdjustment"
+      "--enable-features=UseOzonePlatform"
+      "--ozone-platform=wayland"
+    ];
   };
 
   programs.git = {

@@ -2,7 +2,7 @@
 
 /* --- Global Styles --- */
 * {
-  font-family: 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', sans-serif;
+  /* font-family: 'SF Pro Text', 'Inter', 'Segoe UI', 'NotoSans Nerd Font', 'Noto Color Emoji', sans-serif; */
   font-size: 13px;
   min-height: 0;
   padding-right: 0px;
@@ -12,6 +12,7 @@
 
 /* --- Waybar Container --- */
 #waybar {
+  font-family: 'SF Pro Text';
   background: transparent;
   color: #c6d0f5;
   margin: 0px;
@@ -22,6 +23,7 @@
 #workspaces,
 #custom-uptime,
 #cpu {
+  font-family: 'SF Pro Text';
   background-color: #1a1b26;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
@@ -34,22 +36,26 @@
 }
 
 #workspaces {
+  font-family: 'SF Pro Text';
   padding: 2px;
   margin-left: 7px; /* Margin from the far left edge */
   margin-right: 5px; /* Spacing after the workspaces module */
 }
 
 #custom-uptime {
+  font-family: 'SF Pro Text';
   margin-right: 5px; /* Spacing after the uptime module */
 }
 
 /* Simple Hover effects for individual left modules - BRIGHTER COLOR */
 #custom-uptime:hover,
 #cpu:hover {
+  font-family: 'SF Pro Text';
   background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
 
 #workspaces button {
+  font-family: 'SF Pro Text';
   color: #babbf1;
   border-radius: 5px; /* Workspaces buttons are always rounded */
   padding: 0.3rem 0.6rem;
@@ -60,18 +66,21 @@
 }
 
 #workspaces button.active {
+  font-family: 'SF Pro Text';
   color: #99d1db;
   background-color: rgba(153, 209, 219, 0.1);
   box-shadow: inset 0 0 0 1px rgba(153, 209, 219, 0.2);
 }
 
 #workspaces button:hover {
+  font-family: 'SF Pro Text';
   background: rgb(41, 42, 53); /* Reference bright hover color */
   color: #c6d0f5;
 }
 
 /* --- Center Module (Individual, Fully Rounded Block - With Simple Hover) --- */
 #clock {
+  font-family: 'SF Pro Text';
   background-color: #1a1b26;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px;
@@ -84,10 +93,12 @@
 
 /* Simple Hover effect for clock module - BRIGHTER COLOR */
 #clock:hover {
+  font-family: 'SF Pro Text';
   background-color: rgba(153, 209, 219, 0.1); /* Brighter highlight */
 }
 
 #custom-pomodoro {
+  font-family: 'SF Pro Text';
     background-color: #1a1b26; /* Consistent dark background */
     padding: 0.3rem 0.7rem; /* Consistent padding with other modules (e.g., cpu, uptime) */
     margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
@@ -132,6 +143,7 @@
 #network,
 #custom-lock,
 #battery {
+  font-family: 'SF Pro Text';
   background-color: #1a1b26;
   padding: 0.3rem 0.7rem;
   margin: 5px 0px; 
@@ -148,73 +160,91 @@
 #network:hover,
 #custom-lock:hover,
 #battery:hover {
+  font-family: 'SF Pro Text';
   background-color: rgb(41, 42, 53);
 }
 
 #bluetooth {
+  font-family: 'SF Pro Text';
   margin-left: 0px; 
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
 }
 
 #battery {
+  font-family: 'SF Pro Text';
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
   margin-right: 7px;
 }
 
 #custom-uptime {
+  font-family: 'SF Pro Text';
   color: #babbf1;
 }
 #cpu {
+  font-family: 'SF Pro Text';
   color: #c6d0f5;
 }
 
 #clock {
+  font-family: 'SF Pro Text';
   color: #99d1db;
   font-weight: 500;
 }
 
 #pulseaudio {
+  font-family: 'SF Pro Text';
   color: #c6d0f5;
 }
 #backlight {
+  font-family: 'SF Pro Text';
   color: #c6d0f5;
 }
 
 #network {
+  font-family: 'SF Pro Text';
   color: #c6d0f5;
 }
 
 #network.disconnected {
+  font-family: 'SF Pro Text';
   color: #e78284;
 }
 
 #custom-lock {
+  font-family: 'SF Pro Text';
   color: #babbf1;
 }
 #bluetooth {
+  font-family: 'SF Pro Text';
   color: #888888;
   font-size: 16px;
 }
 #bluetooth.on {
+  font-family: 'SF Pro Text';
   color: #2196f3;
 }
 #bluetooth.connected {
+  font-family: 'SF Pro Text';
   color: #99d1db;
 }
 #battery {
+  font-family: 'SF Pro Text';
   color: #99d1db;;
 }
 #battery.charging {
+  font-family: 'SF Pro Text';
   color: #a6d189;
 }
 #battery.warning:not(.charging) {
+  font-family: 'SF Pro Text';
   color: #e78284;
 }
 
 /* --- Tooltip Styles --- */
 tooltip {
+  font-family: 'SF Pro Text';
   background-color: #1a1b26;
   color: #dddddd;
   padding: 5px 12px;

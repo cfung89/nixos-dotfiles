@@ -25,16 +25,3 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 local friendly = 0
-
-vim.api.nvim_create_user_command("Friendly",
-	function()
-		if friendly == 1 then
-			friendly = 0
-			vim.cmd("set mouse=r")
-		else
-			friendly = 1
-			vim.cmd("set mouse=a")
-			vim.cmd("startinsert")
-		end
-	end,
-	{ desc = "Toggle floating terminal" })

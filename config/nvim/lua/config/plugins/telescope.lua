@@ -32,7 +32,7 @@ return {
 			end)
 			vim.keymap.set("n", "<leader>fc", function()
 				builtin.find_files({
-					cwd = vim.fn.stdpath("config"),
+					cwd = os.getenv("HOME") .. "/nixos-dotfiles",
 					hidden = true,
 					no_ignore = false, -- do not show gitignore
 				})

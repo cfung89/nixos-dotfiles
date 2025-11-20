@@ -5,9 +5,9 @@ shell-integration-features = no-cursor,sudo,no-title
 
 # Styles
 # font-family = "Hack Nerd Font"
-# theme = MistyRose
+theme = rose-pine-moon
 font-size = 18
-font-feature = -calt -dlig -liga
+font-feature = -calt, -dlig, -liga
 adjust-cell-height = 5
 cursor-opacity = 1
 
