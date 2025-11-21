@@ -119,7 +119,12 @@
   ];
 
   fonts = {
-    packages = with pkgs; [ noto-fonts-emoji ];
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      dejavu_fonts
+    ];
     fontconfig.enable = true;
   };
 

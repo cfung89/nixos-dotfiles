@@ -141,7 +141,32 @@ return {
 			ensure_installed = {},
 			automatic_installation = false,
 			automatic_enable = true,
+			-- handlers = {
+			-- 	clangd = function()
+			-- 		vim.lsp.start({
+			-- 			name = "clangd",
+			-- 			cmd = { "clangd" },
+			-- 			root_dir = vim.fs.root(0, { ".git", "compile_commands.json" }),
+			-- 		})
+			-- 	end,
+			-- },
 		})
+		-- vim.lsp.config.clangd = {
+		-- 	name = "clangd",
+		-- 	cmd = { "clangd", "--query-driver=/nix/store/*-gcc*/bin/gcc" },
+		-- 	root_markers = { ".clangd", "compile_commands.json" },
+		-- 	filetypes = { "c", "cpp" },
+		-- 	on_attach = function(client, bufnr)
+		-- 		vim.print("clangd attached")
+		-- 	end,
+		-- }
+		vim.lsp.config.clangd = {
+			cmd = { "clangd" },
+			root_markers = { "compile_commands.json", "compile_flags.txt" },
+			filetypes = { "c", "cpp" },
+		}
+		vim.lsp.enable({ "clangd" })
+
 		-- require("lspconfig")["gopls"].setup({ behavior = cmp.ConfirmBehavior.Insert })
 	end,
 }

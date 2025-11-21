@@ -3,6 +3,7 @@
 let
   shellAliases = {
     nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#Scorpius";
+    ns = "nix-shell";
     l = "ls -CF";
     ll = "ls -la";
     cl = "clear";

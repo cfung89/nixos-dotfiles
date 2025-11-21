@@ -39,14 +39,10 @@ in {
     pkgs.discord
     pkgs.fastfetch
     flameshot-wlr
-    pkgs.gcc
     pkgs.ghostty
     pkgs.htop
-    pkgs.jdk
-    pkgs.luajit
     pkgs.neovim
     pkgs.nodejs
-    pkgs.python3
     pkgs.obsidian
     pkgs.ripgrep
     pkgs.signal-desktop
@@ -54,6 +50,11 @@ in {
     pkgs.wl-clipboard
     pkgs.rofi
     pkgs.zathura
+
+    # pkgs.gcc
+    # pkgs.jdk
+    # pkgs.luajit
+    # pkgs.python3
   ];
 
   programs.fzf = {
@@ -65,11 +66,8 @@ in {
     enable = true;
     package = pkgs.brave;
     extensions = [ ];
-    commandLineArgs = [
-      "--disable-features=WebRtcAllowInputVolumeAdjustment"
-      "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
-    ];
+    commandLineArgs =
+      [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ];
   };
 
   programs.git = {

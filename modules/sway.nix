@@ -68,7 +68,8 @@ in {
           "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
 
           # Browser
-          "${mod}+b" = "exec ${pkgs.brave}/bin/brave";
+          "${mod}+b" =
+            "exec ${pkgs.brave}/bin/brave --enable-features=UseOzonePlatform --ozone-platform=wayland";
 
           # Menu and Applications
           "${mod}+d" =

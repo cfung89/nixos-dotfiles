@@ -1,6 +1,6 @@
 configuration {
     modi: "drun";
-    font: "Inter 16";
+    font: "Inter 18";
     icon-theme: "Papirus";
     show-icons: true;
     drun-show-actions: false;
