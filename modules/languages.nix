@@ -2,5 +2,5 @@
 
 {
   # programs.jdk = { enable = true; };
-  # home.packages = with pkgs; [ clang-tools ];
+  home.packages = with pkgs; [ gcc python3 ];
 }

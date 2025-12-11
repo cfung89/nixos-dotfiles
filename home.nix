@@ -66,8 +66,11 @@ in {
     enable = true;
     package = pkgs.brave;
     extensions = [ ];
-    commandLineArgs =
-      [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ];
+    commandLineArgs = [
+      "--enable-features=UseOzonePlatform"
+      "--ozone-platform=wayland"
+      "--disable-features=WaylandWpColorManagerV1"
+    ];
   };
 
   programs.git = {

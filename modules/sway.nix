@@ -69,7 +69,7 @@ in {
 
           # Browser
           "${mod}+b" =
-            "exec ${pkgs.brave}/bin/brave --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            "exec ${pkgs.brave}/bin/brave --enable-features=UseOzonePlatform --ozone-platform=wayland --disable-features=WaylandWpColorManagerV1";
 
           # Menu and Applications
           "${mod}+d" =

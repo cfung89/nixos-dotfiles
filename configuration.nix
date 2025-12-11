@@ -103,6 +103,9 @@
   environment.variables = {
     XCURSOR_THEME = "Adwaita";
     XCURSOR_SIZE = "24";
+    WLR_RENDERER = "vulkan";
+    WLR_NO_HARDWARE_CURSORS = 1;
+    XWAYLAND_NO_GLAMOR = 1;
   };
 
   environment.systemPackages = with pkgs; [
