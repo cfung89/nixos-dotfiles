@@ -6,6 +6,7 @@ let
   configs = {
     vim = "vim";
     nvim = "nvim";
+    tms = "tms";
     tmux = "tmux";
     ghostty = "ghostty";
     waybar = "waybar";
@@ -39,8 +40,9 @@ in {
     pkgs.discord
     pkgs.fastfetch
     flameshot-wlr
+    pkgs.feh
     pkgs.ghostty
-    pkgs.htop
+    pkgs.btop
     pkgs.neovim
     pkgs.nodejs
     pkgs.obsidian
