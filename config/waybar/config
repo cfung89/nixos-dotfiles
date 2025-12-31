@@ -1,38 +1,63 @@
 {
-    "modules-left": [ "sway/workspaces" ],
-    "modules-center": [ "clock" ],
-    "modules-right": [ "wireplumber", "temperature", "network", "bluetooth", "memory", "gpu", "cpu" ],
+    "layer": "top",
+        "position": "top",
+        "height": 34,
+        "spacing": 4,
 
-    "sway/workspaces": {
-        "format": "{name}: {icon}",
-        "format-icons": {
-            "focused": "🟢",
-            "default": "⚪",
+        "modules-left": [ "sway/workspaces" ],
+        "modules-center": [ "clock" ],
+        "modules-right": [ "wireplumber", "temperature", "network", "bluetooth", "memory", "cpu" ],
+
+        "sway/workspaces": {
+            "format": "{name}: {icon}",
+            "format-icons": {
+                "focused": "🟢",
+                "default": "⚪"
+            }
         },
-    },
 
-    "clock": {
-        "timezone": "America/Montreal",
-        "tooltip": false,
-        "format": "{:%I:%M:%S %p -  %A, %d %h %Y}",
-        "interval": 1,
-    },
+        "clock": {
+            "format": "<span>󰥔 </span>{:%I:%M:%S %p — %A, %d %b %Y}",
+            "interval": 1,
+            "tooltip": false
+        },
 
-    "cpu": {
-        "interval": 10,
-        "format": "CPU | {load} | {usage}%",
-    },
+        "cpu": {
+            "interval": 10,
+            "format": "<span> </span> {usage}%",
+            "tooltip-format": "CPU Usage: {usage}%\nAvg Load: {load}"
+        },
 
-    "memory": {
-        "interval": 30,
-        "format": "Mem | {percentage}% | {used:0.1f} GB / {total:0.1f} GB",
-    },
+        "memory": {
+            "interval": 30,
+            "format": "<span> </span> {used:0.1f}G / {total:0.1f}G",
+            "tooltip-format": "Memory: {used:0.1f}GB / {total:0.1f}GB\nSwap: {swapUsed:0.1f}GB"
+        },
 
-    "temperature": {
-        "format": "{temperatureC}°C",
-    },
+        "temperature": {
+            "critical-threshold": 80,
+            "format": "<span> </span> {temperatureC}°C"
+        },
 
-    "gpu": {
-        "format": "GPU | {load} | {usage}%"
-    },
+        "wireplumber": {
+            "format": "<span> </span> {volume}%",
+            "format-muted": "<span></span> Muted",
+            "on-click": "helvum"
+        },
+
+        "network": {
+            "format-wifi": "<span> </span> {essid}",
+            "format-ethernet": "<span>󰈀 </span> Wired",
+            "format-disconnected": "<span>󰖪 </span> Disconnected",
+            "tooltip-format": "{ifname} via {gwaddr}"
+        },
+
+        "bluetooth": {
+            "format": "<span> </span> {status}",
+            "format-connected": "<span> </span> {device_alias}",
+            "format-connected-battery": "<span> </span> {device_alias} {device_battery_percentage}%",
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        }
 }

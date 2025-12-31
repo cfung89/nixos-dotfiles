@@ -1,8 +1,7 @@
-{ config, pkgs, ... }:
-
 let
   shellAliases = {
     nrs = "sudo nixos-rebuild switch --flake ~/nixos-dotfiles#Scorpius";
+    ncg = "nix-collect-garbage";
     ns = "nix-shell";
     l = "ls -CF";
     ll = "ls -la";
