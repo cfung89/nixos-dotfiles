@@ -27,7 +27,7 @@
                 users.cyrus = import ./machines/${hostname}/home.nix;
               };
             }
-          ];
+          ] ++ extraModules;
         };
     in {
       nixosConfigurations = {

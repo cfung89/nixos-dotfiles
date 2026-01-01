@@ -11,7 +11,7 @@
   services.xserver.enable = false;
 
   wsl.enable = true;
-  wsl.defaultUser = "yourusername";
+  wsl.defaultUser = "cyrus";
 
   fileSystems."/" = {
     device = "/dev/disk/by-label/nixos";
