@@ -70,22 +70,21 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "nouveau" ]; # [ "nvidia" ]
 
+  services.xserver.displayManager.lightdm.enable = false;
+  services.displayManager.sddm.enable = false;
+  systemd.services.display-manager.enable = false;
+
   # services.getty.autologinUser = "cyrus";
 
-  # # Greetd
-  # services.greetd = {
-  #   enable = true;
-  #   settings = {
-  #     default_session = {
-  #       command = "${pkgs.sway}/bin/sway";
-  #       user = "cyrus";
-  #     };
-  #   };
-  # };
-  # environment.etc."greetd/environments".text = ''
-  #   sway
-  #   bash
-  # '';
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        user = "cyrus";
+      };
+    };
+  };
 
   # Set up num lock by default on tty
   systemd.services.numLockOnTty = {

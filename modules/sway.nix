@@ -12,13 +12,18 @@ in {
         # { command = "${pkgs.numlockx}/bin/numlockx on"; always = true; }
       ];
       window = {
-        border = 3;
+        border = 1;
         titlebar = false;
         commands = [{
           criteria.app_id = "flameshot";
           command =
             "border pixel 0, floating enable, fullscreen disable, move absolute position 0 0";
         }];
+      };
+      gaps = {
+        inner = 10;
+        outer = 5;
+        smartGaps = true;
       };
       output = {
         "DP-2" = {
@@ -73,7 +78,7 @@ in {
 
           # Menu and Applications
           "${mod}+d" =
-            "exec ${pkgs.rofi}/bin/rofi -show drun -show-icons -monitor DP-2";
+            "exec ${pkgs.rofi}/bin/rofi -show drun -plugin-path ${pkgs.rofi-calc}/lib/rofi -modi calc -show-icons -monitor DP-2";
           "${mod}+q" = "kill";
 
           # System and display
@@ -127,9 +132,8 @@ in {
       include /etc/sway/config.d/*
       seat seat0 xcursor_theme Adwaita 24
 
-      input "1133:16493:Logitech_M705" {
-        # scroll_factor 1.5
-      }
+      default_border pixel 3
+      default_floating_border pixel 3
     '';
   };
 }

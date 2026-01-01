@@ -50,7 +50,9 @@ in {
     pkgs.signal-desktop
     pkgs.tmux
     pkgs.wl-clipboard
-    pkgs.rofi
+    pkgs.rofi-wayland
+    pkgs.rofi-calc
+    pkgs.libqalculate
     pkgs.zathura
 
     # pkgs.gcc

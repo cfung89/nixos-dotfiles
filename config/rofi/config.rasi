@@ -2,12 +2,12 @@
 
 
 configuration {
-    modes: "window,drun,run,ssh,combi";
-    combi-modes: "drun,run";
-    show-icons:      true;
+    modes: "calc,window,run,ssh";
+    show-icons: true;
     display-combi: "";
     display-drun:    "";
     disable-history: false;
+    terminal: "ghostty";
 
     lines: 10;
 
@@ -28,16 +28,20 @@ configuration {
     kb-custom-8: "";
     kb-custom-9: "";
     kb-custom-10: "";
-    kb-select-1: "Alt+1";
-    kb-select-2: "Alt+2";
-    kb-select-3: "Alt+3";
-    kb-select-4: "Alt+4";
-    kb-select-5: "Alt+5";
-    kb-select-6: "Alt+6";
-    kb-select-7: "Alt+7";
-    kb-select-8: "Alt+8";
-    kb-select-9: "Alt+9";
-    kb-select-10: "Alt+0";
+    kb-select-1: "Control+1";
+    kb-select-2: "Control+2";
+    kb-select-3: "Control+3";
+    kb-select-4: "Control+4";
+    kb-select-5: "Control+5";
+    kb-select-6: "Control+6";
+    kb-select-7: "Control+7";
+    kb-select-8: "Control+8";
+    kb-select-9: "Control+9";
+    kb-select-10: "Control+0";
+
+    calc {
+        calc-command: "echo -n '{result}' | wl-copy";
+    }
 }
 
 * {
@@ -163,7 +167,7 @@ configuration {
 }
 #textbox-prompt-colon {
     expand:     false;
-    str:        " > ";
+    str:        "> ";
     margin:     0px 0.3em 0em 0.2em ;
     text-color: @foreground;
 }
