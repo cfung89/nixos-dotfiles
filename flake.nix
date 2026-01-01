@@ -24,6 +24,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 backupFileExtension = "backup";
+                extraSpecialArgs = { inherit isWSL; };
                 users.cyrus = import ./machines/${hostname}/home.nix;
               };
             }

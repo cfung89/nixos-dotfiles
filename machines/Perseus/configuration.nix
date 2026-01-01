@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, isWSL, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ../../common/configuration.nix ];
@@ -12,11 +12,6 @@
 
   wsl.enable = true;
   wsl.defaultUser = "cyrus";
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/nixos";
-    fsType = "ext4";
-  };
 
   boot.loader.grub.enable = false;
   boot.loader.systemd-boot.enable = false;

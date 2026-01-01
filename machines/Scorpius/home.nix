@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, isWSL, ... }:
 
 let flameshot-wlr = pkgs.flameshot.override { enableWlrSupport = true; };
 in {

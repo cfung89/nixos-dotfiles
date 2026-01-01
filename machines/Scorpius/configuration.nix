@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, isWSL, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ../../common/configuration.nix ];
