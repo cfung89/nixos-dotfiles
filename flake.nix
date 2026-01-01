@@ -34,7 +34,7 @@
         Scorpius = mkMachine { hostname = "Scorpius"; };
         Perseus = mkMachine {
           hostname = "Perseus";
-          architecture = "aarch64-linux";
+          system = "aarch64-linux";
           isWSL = true;
           extraModules = [ inputs.nixos-wsl.nixosModules.default ];
         };
