@@ -12,15 +12,8 @@ let
     waybar = "waybar";
     rofi = "rofi";
   };
-  flameshot-wlr = pkgs.flameshot.override { enableWlrSupport = true; };
 in {
-  imports = [
-    ./modules/shell.nix
-    ./modules/sway.nix
-    ./modules/swaylock.nix
-    ./modules/swayidle.nix
-    ./modules/languages.nix
-  ];
+  imports = [ ../modules/shell.nix ../modules/languages.nix ];
 
   home.username = "cyrus";
   home.homeDirectory = "/home/cyrus";
@@ -37,28 +30,14 @@ in {
   home.packages = [
     pkgs.cargo
     pkgs.curl
-    pkgs.discord
     pkgs.fastfetch
-    flameshot-wlr
     pkgs.feh
-    pkgs.ghostty
     pkgs.btop
     pkgs.neovim
     pkgs.nodejs
-    pkgs.obsidian
     pkgs.ripgrep
-    pkgs.signal-desktop
     pkgs.tmux
     pkgs.wl-clipboard
-    pkgs.rofi-wayland
-    pkgs.rofi-calc
-    pkgs.libqalculate
-    pkgs.zathura
-
-    # pkgs.gcc
-    # pkgs.jdk
-    # pkgs.luajit
-    # pkgs.python3
   ];
 
   programs.fzf = {
@@ -66,23 +45,10 @@ in {
     enableFishIntegration = false;
   };
 
-  programs.chromium = {
-    enable = true;
-    package = pkgs.brave;
-    extensions = [ ];
-    commandLineArgs = [
-      "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
-      "--disable-features=WaylandWpColorManagerV1"
-    ];
-  };
-
   programs.git = {
     enable = true;
     extraConfig.init.defaultBranch = "main";
   };
-
-  programs.waybar.enable = true;
 
   xdg.configFile = builtins.mapAttrs (name: subpath: {
     source = create_symlink "${dotfiles}/${subpath}";

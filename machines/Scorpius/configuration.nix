@@ -1,37 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
-
-  nixpkgs.config.allowUnfree = true;
+  imports = [ ./hardware-configuration.nix ../../common/configuration.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  security.polkit.enable = true;
-  security.pam.services.swaylock = { };
   services.seatd.enable = true;
-  services.dbus.enable = true;
-  # services.gnome.gnome-keyring.enable = true;
-  programs.dconf.enable = true;
-  programs.nix-ld.enable = true;
-  hardware.graphics.enable = true; # GPU acceleration
+  security.pam.services.swaylock = { };
 
   # Networking
   networking.hostName = "Scorpius";
   networking.networkmanager.enable = true;
-
-  time.timeZone = "America/Montreal";
-
-  # Printing (CUPS)
-  services.printing.enable = true;
-
-  # User
-  users.users.cyrus = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" "seat" ];
-    packages = with pkgs; [ tree ];
-  };
 
   # Settings for flameshot
   xdg.portal = {
@@ -57,24 +37,9 @@
   # Default browser
   programs.firefox.enable = true;
 
-  documentation.man.enable = true;
-  systemd.tmpfiles.rules = [
-    "d /var/cache/man 0755 root root -"
-    "d /var/cache/man/nixos 0755 root root -"
-  ];
-
-  # SSH
-  services.openssh.enable = true;
-
   # Display/xserver
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nouveau" ]; # [ "nvidia" ]
-
-  services.xserver.displayManager.lightdm.enable = false;
-  services.displayManager.sddm.enable = false;
-  systemd.services.display-manager.enable = false;
-
-  # services.getty.autologinUser = "cyrus";
+  services.xserver.videoDrivers = [ "nouveau" ];
 
   services.greetd = {
     enable = true;
@@ -100,43 +65,15 @@
   };
 
   environment.variables = {
-    XCURSOR_THEME = "Adwaita";
-    XCURSOR_SIZE = "24";
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = 1;
     XWAYLAND_NO_GLAMOR = 1;
   };
 
   environment.systemPackages = with pkgs; [
-    vim
-    foot
-    wget
     libreoffice
-    adwaita-icon-theme
     xorg.xcursorthemes
-    man-db
     numlockx
-    zip
-    unzip
   ];
-
-  fonts = {
-    packages = with pkgs; [
-      font-awesome
-      noto-fonts
-      noto-fonts-cjk-sans
-      noto-fonts-emoji
-      dejavu_fonts
-      nerd-fonts.symbols-only
-    ];
-    fontconfig = {
-      defaultFonts.emoji = [ "Noto Color Emoji" ];
-      enable = true;
-    };
-  };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  system.stateVersion = "25.05";
 }
 
