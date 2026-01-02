@@ -31,7 +31,8 @@ in {
   };
 
   home.shellAliases = {
-    nrs = "cd ~/nixos-dotfiles/ && git add . && sudo nixos-rebuild switch --flake ~/nixos-dotfiles#${targetHost}";
+    nrs =
+      "cd ~/nixos-dotfiles/ && ./add && sudo nixos-rebuild switch --flake ~/nixos-dotfiles#${targetHost}";
   };
 
   home.packages = [

@@ -13,6 +13,22 @@
   networking.hostName = "Scorpius";
   networking.networkmanager.enable = true;
 
+  # Printing (CUPS)
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.samsung-unified-linux-driver ];
+  };
+  hardware.printers = {
+    ensurePrinters = [{
+      name = "SCX-472x_Series";
+      description = "SCX-472x_Series";
+      location = "2nd floor";
+      deviceUri = "socket://192.168.1.115:9100";
+      model = "samsung/SCX-472x.ppd";
+      ppdOptions = { PageSize = "Letter"; };
+    }];
+  };
+
   # Settings for flameshot
   xdg.portal = {
     enable = true;
