@@ -4,6 +4,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local conform = require("conform")
+			vim.g.disable_autoformat = true
 
 			conform.setup({
 				formatters_by_ft = {
