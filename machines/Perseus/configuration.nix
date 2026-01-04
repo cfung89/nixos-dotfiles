@@ -13,7 +13,9 @@
   wsl.enable = true;
   wsl.defaultUser = "cyrus";
 
-  boot.loader.grub.enable = false;
-  boot.loader.systemd-boot.enable = false;
+  boot.loader = {
+    grub.enable = false;
+    systemd-boot.enable = false;
+  };
 }
 

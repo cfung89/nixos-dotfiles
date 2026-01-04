@@ -3,8 +3,12 @@
 {
   imports = [ ./hardware-configuration.nix ../../common/configuration.nix ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+  };
 
   services.seatd.enable = true;
   security.pam.services.swaylock = { };
@@ -67,19 +71,6 @@
     };
   };
 
-  # Set up num lock by default on tty
-  systemd.services.numLockOnTty = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      # /run/current-system/sw/bin/setleds -D +num < "$tty";
-      ExecStart = lib.mkForce (pkgs.writeShellScript "numLockOnTty" ''
-        for tty in /dev/tty{1..6}; do
-            ${pkgs.kbd}/bin/setleds -D +num < "$tty";
-        done
-      '');
-    };
-  };
-
   environment.variables = {
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = 1;
@@ -89,7 +80,6 @@
   environment.systemPackages = with pkgs; [
     libreoffice
     xorg.xcursorthemes
-    numlockx
   ];
 }
 
