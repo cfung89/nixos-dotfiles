@@ -3,6 +3,8 @@
 {
   imports = [ ./hardware-configuration.nix ../../common/configuration.nix ];
 
+  security.sudo.wheelNeedsPassword = true;
+
   # Networking
   networking.hostName = "Perseus";
   networking.networkmanager.enable = false;

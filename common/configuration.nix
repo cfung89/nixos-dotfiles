@@ -4,9 +4,9 @@
   nixpkgs.config.allowUnfree = true;
 
   security.polkit.enable = true;
-  services.dbus.enable = true;
   programs.dconf.enable = true;
   programs.nix-ld.enable = true;
+  services.dbus.enable = true;
   hardware.graphics.enable = true;
 
   time.timeZone = "America/Montreal";

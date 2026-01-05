@@ -12,7 +12,7 @@ let
     waybar = "waybar";
     rofi = "rofi";
   };
-  targetHost = if isWSL then "WSL-ARM" else "Scorpius";
+  targetHost = if isWSL then "Perseus" else "Scorpius";
 in {
   imports = [ ../modules/shell.nix ../modules/languages.nix ];
 
