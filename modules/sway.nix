@@ -8,9 +8,8 @@ in {
       modifier = mod;
       bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
       terminal = "ghostty";
-      startup = [
-        # { command = "${pkgs.numlockx}/bin/numlockx on"; always = true; }
-      ];
+      startup = [ ];
+      input = { "*" = { xkb_numlock = "enabled"; }; };
       window = {
         border = 1;
         titlebar = false;

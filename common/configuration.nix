@@ -11,9 +11,6 @@
 
   time.timeZone = "America/Montreal";
 
-  # Printing (CUPS)
-  services.printing.enable = true;
-
   # User
   users.users.cyrus = {
     isNormalUser = true;

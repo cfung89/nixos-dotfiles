@@ -4,6 +4,7 @@ return {
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			local conform = require("conform")
+			vim.g.disable_autoformat = true
 
 			conform.setup({
 				formatters_by_ft = {
@@ -28,6 +29,7 @@ return {
 			})
 
 			vim.keymap.set({ "n", "v" }, "<leader>l", function()
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("gg=G<C-o>", true, false, true), 'm', true)
 				conform.format({
 					lsp_fallback = true,
 					async = false,
