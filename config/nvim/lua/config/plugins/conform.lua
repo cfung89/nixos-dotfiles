@@ -29,6 +29,7 @@ return {
 			})
 
 			vim.keymap.set({ "n", "v" }, "<leader>l", function()
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("gg=G<C-o>", true, false, true), 'm', true)
 				conform.format({
 					lsp_fallback = true,
 					async = false,
