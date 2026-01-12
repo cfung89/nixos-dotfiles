@@ -41,6 +41,7 @@ in {
     pkgs.fastfetch
     pkgs.feh
     pkgs.btop
+    pkgs.go
     pkgs.neovim
     pkgs.nodejs
     pkgs.ripgrep
