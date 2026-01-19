@@ -43,7 +43,6 @@ return {
 			mapping = cmp.mapping.preset.insert({
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-				["<C-y>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
 				["<Tab>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Insert }),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-q>"] = cmp.mapping.abort(),
@@ -53,9 +52,9 @@ return {
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
 			}, {
-				{ name = "path" },
-				{ name = "buffer" },
-			}),
+					{ name = "path" },
+					{ name = "buffer" },
+				}),
 			formatting = {
 				fields = { "abbr", "kind", "menu" },
 				format = function(entry, item)
@@ -119,8 +118,10 @@ return {
 					"Open Diagnostic Window")
 				map("]d", function() vim.diagnostic.jump({ count = 1 }) end, "Goto Next Diagnostic")
 				map("[d", function() vim.diagnostic.jump({ count = -1 }) end, "Goto Previous Diagnostic")
+				map("<C-y>", function() vim.lsp.buf.signature_help() end, "Signature help")
 				-- map("]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, "Goto Next Diagnostic")
 				-- map("[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, "Goto Previous Diagnostic")
+				vim.keymap.set("i", "<C-y>", function() vim.lsp.buf.signature_help() end, { desc = "Signature help" })
 			end,
 		})
 
