@@ -14,19 +14,18 @@
   # User
   users.users.cyrus = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" "seat" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "input" "seat" "docker" ];
     packages = with pkgs; [ tree ];
   };
 
+  # Man
   documentation.man.enable = true;
-  systemd.tmpfiles.rules = [
-    "d /var/cache/man 0755 root root -"
-    "d /var/cache/man/nixos 0755 root root -"
-  ];
+  documentation.man.generateCaches = true;
 
   # SSH
   services.openssh.enable = true;
 
+  # Display manager
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm.enable = false;
   systemd.services.display-manager.enable = false;
@@ -36,12 +35,16 @@
     XCURSOR_SIZE = "24";
   };
 
+  # Docker
+  virtualisation.docker.enable = true;
+
   environment.systemPackages = with pkgs; [
     vim
     foot
     wget
     adwaita-icon-theme
-    man-db
+    man-pages
+    man-pages-posix
     zip
     unzip
   ];

@@ -27,7 +27,6 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     SSH_ASKPASS = "";
-    MANPATH = "${pkgs.man-db}/share/man:${pkgs.man-pages}/share/man";
   };
 
   home.shellAliases = {
