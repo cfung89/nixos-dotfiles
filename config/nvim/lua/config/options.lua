@@ -18,7 +18,7 @@ set.termguicolors = true
 
 set.mouse = ""
 
-set.hlsearch = false
+set.hlsearch = true
 set.incsearch = true
 set.ignorecase = true -- ignore case when searching
 set.smartcase = true  -- unless capital letter in search
