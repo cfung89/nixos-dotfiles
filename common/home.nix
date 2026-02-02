@@ -27,6 +27,7 @@ in {
     EDITOR = "nvim";
     PAGER = "less -FirSwX";
     SSH_ASKPASS = "";
+    NIX_SHELL_PRESERVE_PROMPT = "1";
   };
 
   home.shellAliases = {

@@ -24,7 +24,16 @@ function check_git() {
         echo ""
     fi
 }
-export PS1="\[\e[33m\][\[\e[m\]\[\e[35m\]\u@\h\[\e[m\]\[\e[33m\]|\[\e[m\]\[\e[34m\]\W\[\e[m\]\[\e[33m\]]\[\e[m\]\[\e[32m\]\`check_git\`\[\e[m\]\[\e[31m\]\`parse_git_branch\`\[\e[m\]\\[\e[33m\]\$\[\e[m\] "
+
+PROMPT_COMMAND='
+if [ -n "$IN_NIX_SHELL" ]; then
+    export PS1="\[\e[33m\][\[\e[m\]\[\e[35m\]nix-shell@\h\[\e[m\]\[\e[33m\]|\[\e[m\]\[\e[34m\]\W\[\e[m\]\[\e[33m\]]\[\e[m\]\[\e[32m\]\`check_git\`\[\e[m\]\[\e[31m\]\`parse_git_branch\`\[\e[m\]\\[\e[33m\]\$\[\e[m\] "
+    # export PS1="\[\e[32m\][nix-shell@\h|\W]\`check_git\`\`parse_git_branch\`\$\[\e[m\] "
+else
+    export PS1="\[\e[33m\][\[\e[m\]\[\e[35m\]\u@\h\[\e[m\]\[\e[33m\]|\[\e[m\]\[\e[34m\]\W\[\e[m\]\[\e[33m\]]\[\e[m\]\[\e[32m\]\`check_git\`\[\e[m\]\[\e[31m\]\`parse_git_branch\`\[\e[m\]\\[\e[33m\]\$\[\e[m\] "
+fi
+unset PROMPT_COMMAND
+'
 
 # Easy cd up
 function cd_up() {
@@ -43,8 +52,8 @@ export LS_COLORS
 
 # fzf
 if command -v fzf-share >/dev/null; then
-  source "$(fzf-share)/key-bindings.bash"
-  source "$(fzf-share)/completion.bash"
+    source "$(fzf-share)/key-bindings.bash"
+    source "$(fzf-share)/completion.bash"
 fi
 
 tms_goto() {
