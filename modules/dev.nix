@@ -5,8 +5,11 @@
   home.packages = with pkgs; [
     cargo
     clang-tools
+    docker-compose
     gcc
     go
+    gradle
+    jdk21
     python3
     valgrind
   ];
