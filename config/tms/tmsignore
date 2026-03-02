@@ -3,6 +3,7 @@
 node_modules
 .gradle
 .venv
+target
 
 # Path contains
 ~/go

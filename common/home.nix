@@ -14,7 +14,7 @@ let
   };
   targetHost = if isWSL then "Perseus" else "Scorpius";
 in {
-  imports = [ ../modules/shell.nix ../modules/languages.nix ];
+  imports = [ ../modules/shell.nix ../modules/dev.nix ];
 
   home.username = "cyrus";
   home.homeDirectory = "/home/cyrus";
@@ -36,12 +36,10 @@ in {
   };
 
   home.packages = [
-    pkgs.cargo
     pkgs.curl
     pkgs.fastfetch
     pkgs.feh
     pkgs.btop
-    pkgs.go
     pkgs.neovim
     pkgs.nodejs
     pkgs.ripgrep

@@ -35,5 +35,7 @@ set.termguicolors = true -- for bufferline
 
 set.signcolumn = "yes:1"
 
+vim.o.winborder = "rounded"
+
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
 vim.cmd("set mouse=a")

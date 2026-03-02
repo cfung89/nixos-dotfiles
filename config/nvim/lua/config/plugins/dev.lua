@@ -19,6 +19,25 @@ return {
 			})
 		end,
 	},
+	{
+		dir = "~/Github/nvim_plugins/cmdmacro.nvim",
+		config = function()
+			require("cmdmacro").setup({
+				macros = {
+					{
+						name = "git_status",
+						keymap = "<leader>gs",
+						command = "git status"
+					},
+					{
+						name = "git_add",
+						keymap = "<leader>ga",
+						command = "git add ."
+					},
+				},
+			})
+		end,
+	},
 	-- {
 	-- 	dir = "~/Github/nvim_plugins/umple.nvim",
 	-- 	config = function()

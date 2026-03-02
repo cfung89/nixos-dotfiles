@@ -29,7 +29,7 @@ return {
 			})
 
 			vim.keymap.set({ "n", "v" }, "<leader>s", function()
-				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("mzgg=G'zdmz", true, false, true), 'm', true)
+				vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("mzgg=G'zdmzzz", true, false, true), 'm', true)
 				conform.format({
 					lsp_fallback = true,
 					async = false,

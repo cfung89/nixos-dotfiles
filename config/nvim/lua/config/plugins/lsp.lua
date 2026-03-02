@@ -59,15 +59,15 @@ return {
 				fields = { "abbr", "kind", "menu" },
 				format = function(entry, item)
 					local kind = require("lspkind").cmp_format({
-						preset = 'default',
-						mode = 'symbol_text',
+						preset = "default",
+						mode = "symbol_text",
 						maxwidth = 50,
-						ellipsis_char = '...',
+						ellipsis_char = "...",
 						menu = {
-							buffer = '[Buffer]',
-							nvim_lsp = '[LSP]',
-							luasnip = '[LuaSnip]',
-							nvim_lua = '[Lua]',
+							buffer = "[Buffer]",
+							nvim_lsp = "[LSP]",
+							luasnip = "[LuaSnip]",
+							nvim_lua = "[Lua]",
 						},
 					})(entry, item)
 
@@ -92,8 +92,8 @@ return {
 		})
 
 		-- hover border
-		vim.keymap.set('n', 'K', function()
-			vim.lsp.buf.hover({ border = 'rounded' })
+		vim.keymap.set("n", "K", function()
+			vim.lsp.buf.hover({ border = "single" })
 		end)
 
 		-- LSP Keybind Setup
@@ -148,8 +148,34 @@ return {
 			root_markers = { "compile_commands.json", "compile_flags.txt" },
 			filetypes = { "c", "cpp" },
 		}
-		vim.lsp.enable({ "clangd" })
-
-		-- require("lspconfig")["gopls"].setup({ behavior = cmp.ConfirmBehavior.Insert })
+		vim.lsp.config.lua_ls = {
+			settings = {
+				Lua = {
+					codeLens = {
+						enable = true
+					},
+					hint = {
+						enable = true,
+						semicolon = "Disable"
+					},
+					runtime = {
+						version = 'LuaJIT',
+					},
+					diagnostics = {
+						globals = { 'vim' },
+					},
+					workspace = {
+						checkThirdParty = false,
+						library = {
+							vim.env.VIMRUNTIME,
+							-- pulls in all installed Nix/Lazy plugins
+							unpack(vim.api.nvim_get_runtime_file('', true)),
+						},
+					},
+					telemetry = { enable = false },
+				}
+			}
+		}
+		vim.lsp.enable({ "clangd", "lua_ls" })
 	end,
 }

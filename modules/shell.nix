@@ -1,7 +1,6 @@
 let
   shellAliases = {
     ncg = "nix-collect-garbage";
-    ns = "nix-shell";
     l = "ls -CF";
     ll = "ls -la";
     cl = "clear";
