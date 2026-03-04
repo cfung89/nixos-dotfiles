@@ -4,6 +4,7 @@ let mod = "Mod4";
 in {
   wayland.windowManager.sway = {
     enable = true;
+    extraOptions = [ "--unsupported-gpu" ];
     config = {
       modifier = mod;
       bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];

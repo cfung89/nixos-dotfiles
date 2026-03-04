@@ -23,6 +23,10 @@ return {
 		dir = "~/Github/nvim_plugins/cmdmacro.nvim",
 		config = function()
 			require("cmdmacro").setup({
+				terminals = {
+					Left = { width = function() return math.floor(0.2 * vim.o.columns) end},
+					Right = { width = function() return math.floor(0.3 * vim.o.columns) end},
+				},
 				macros = {
 					{
 						name = "git_status",
@@ -34,7 +38,18 @@ return {
 						keymap = "<leader>ga",
 						command = "git add ."
 					},
+					{
+						name = "git_diff",
+						keymap = "<leader>gd",
+						command = "git diff"
+					},
+					{
+						name = "git_diff_staged",
+						keymap = "<leader>gds",
+						command = "git diff --staged"
+					},
 				},
+				editor = { keymaps = { quit = { "q" } } }
 			})
 		end,
 	},

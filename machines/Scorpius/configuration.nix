@@ -1,7 +1,16 @@
-{ config, lib, pkgs, isWSL, ... }:
+{
+config,
+lib,
+pkgs,
+isWSL,
+...
+}:
 
 {
-  imports = [ ./hardware-configuration.nix ../../common/configuration.nix ];
+  imports = [
+    ./hardware-configuration.nix
+    ../../common/configuration.nix
+  ];
 
   boot = {
     loader = {
@@ -23,20 +32,27 @@
     drivers = [ pkgs.samsung-unified-linux-driver ];
   };
   hardware.printers = {
-    ensurePrinters = [{
-      name = "SCX-472x_Series";
-      description = "SCX-472x_Series";
-      location = "2nd floor";
-      deviceUri = "socket://192.168.1.115:9100";
-      model = "samsung/SCX-472x.ppd";
-      ppdOptions = { PageSize = "Letter"; };
-    }];
+    ensurePrinters = [
+      {
+        name = "SCX-472x_Series";
+        description = "SCX-472x_Series";
+        location = "2nd floor";
+        deviceUri = "socket://192.168.1.115:9100";
+        model = "samsung/SCX-472x.ppd";
+        ppdOptions = {
+          PageSize = "Letter";
+        };
+      }
+    ];
   };
 
   # Settings for flameshot
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-wlr xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
     config.common.default = "*";
     configPackages = [ pkgs.xdg-desktop-portal-wlr ];
   };
@@ -59,13 +75,20 @@
 
   # Display/xserver
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nouveau" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd sway";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
         user = "cyrus";
       };
     };
@@ -75,6 +98,8 @@
     WLR_RENDERER = "vulkan";
     WLR_NO_HARDWARE_CURSORS = 1;
     XWAYLAND_NO_GLAMOR = 1;
+    GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
   environment.systemPackages = with pkgs; [
@@ -82,4 +107,3 @@
     xorg.xcursorthemes
   ];
 }
-
