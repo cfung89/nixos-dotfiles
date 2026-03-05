@@ -25,7 +25,7 @@ return {
 			require("cmdmacro").setup({
 				terminals = {
 					Left = { width = function() return math.floor(0.2 * vim.o.columns) end},
-					Right = { width = function() return math.floor(0.3 * vim.o.columns) end},
+					Right = { width = function() return math.floor(0.5 * vim.o.columns) end},
 				},
 				macros = {
 					{
