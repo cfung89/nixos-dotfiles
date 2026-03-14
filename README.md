@@ -14,6 +14,18 @@ And several other applications...
 
 This repository also includes the NixOS configuration for WSL (*aarch64_linux*).
 
+## Installation
+
+Install and run installation script:
+```bash
+wget https://raw.githubusercontent.com/cfung89/nixos-dotfiles/main/install.sh
+sudo ./install.sh
+```
+The installation script sets up Github SSH key, `nixos-dotfiles` directory, tmux plugins, personal Neovim plugins, and rebuilds the system.
+
+>[!WARNING]
+> Installation script requires that the machine has a 
+
 ## Other notes
 
 - Flameshot works with this setup with Sway and wlroots.
