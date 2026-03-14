@@ -7,10 +7,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/nvim-cmp",
-		{
-			"L3MON4D3/LuaSnip",
-			dependencies = { "rafamadriz/friendly-snippets" },
-		},
+		"L3MON4D3/LuaSnip",
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-buffer",
@@ -21,7 +18,6 @@ return {
 			ft = "lua",
 			opts = { library = { { path = "${3rd}/luv/library", words = { "vim%.uv" } }, }, },
 		},
-		"onsails/lspkind.nvim",
 	},
 
 	config = function()
@@ -51,26 +47,13 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "nvim_lsp_signature_help" },
 				{ name = "luasnip" },
+				{ name = "path" },
 			}, {
-					{ name = "path" },
-					{ name = "buffer" },
-				}),
+				{ name = "buffer" },
+			}),
 			formatting = {
 				fields = { "abbr", "kind", "menu" },
 				format = function(entry, item)
-					local kind = require("lspkind").cmp_format({
-						preset = "default",
-						mode = "symbol_text",
-						maxwidth = 50,
-						ellipsis_char = "...",
-						menu = {
-							buffer = "[Buffer]",
-							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
-							nvim_lua = "[Lua]",
-						},
-					})(entry, item)
-
 					local widths = {
 						abbr = vim.g.cmp_widths and vim.g.cmp_widths.abbr or 50,
 						menu = vim.g.cmp_widths and vim.g.cmp_widths.menu or 30,
@@ -86,9 +69,6 @@ return {
 				end,
 			},
 			view = { docs = { auto_open = true } },
-			-- performance = {
-			-- 	max_view_entries = 5,
-			-- },
 		})
 
 		-- hover border
@@ -115,7 +95,7 @@ return {
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 				map("K", function() vim.lsp.buf.hover({ border = "rounded" }) end, "Goto Previous Diagnostic")
 				map("<leader>dd", function() vim.diagnostic.open_float({ border = "rounded" }) end,
-					"Open Diagnostic Window")
+				"Open Diagnostic Window")
 				map("]d", function() vim.diagnostic.jump({ count = 1 }) end, "Goto Next Diagnostic")
 				map("[d", function() vim.diagnostic.jump({ count = -1 }) end, "Goto Previous Diagnostic")
 				map("<C-y>", function() vim.lsp.buf.signature_help() end, "Signature help")
