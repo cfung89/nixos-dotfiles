@@ -48,6 +48,12 @@ return {
 						keymap = "<leader>gds",
 						command = "git diff --staged"
 					},
+					{
+						name = "git_commit",
+						keymap = "<leader>gc",
+						command = "git commit -m ",
+						interactive = true
+					},
 				},
 				editor = { keymaps = { quit = { "q" } } }
 			})

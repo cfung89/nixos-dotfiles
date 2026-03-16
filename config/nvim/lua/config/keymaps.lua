@@ -29,3 +29,7 @@ vim.keymap.set("v", "<leader>x", ":lua<CR>")
 -- Oil plugin
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 vim.keymap.set("n", "<leader>q", "<cmd>Oil<CR>")
+
+-- Noice plugin
+vim.keymap.set("n", "<leader>nl",  "<cmd>Noice last<CR>")
+vim.keymap.set("n", "<leader>nd", "<cmd>Noice dismiss<CR>")
