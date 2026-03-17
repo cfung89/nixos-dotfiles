@@ -23,9 +23,6 @@ sudo ./install.sh
 ```
 The installation script sets up Github SSH key, `nixos-dotfiles` directory, tmux plugins, personal Neovim plugins, and rebuilds the system.
 
->[!WARNING]
-> Installation script requires that the machine has a 
-
 ## Other notes
 
 - Flameshot works with this setup with Sway and wlroots.

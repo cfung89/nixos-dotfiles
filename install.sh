@@ -36,7 +36,7 @@ mkdir -p \$HOME/Github/nvim_plugins
 cd \$HOME/Github/nvim_plugins
 git clone git@github.com:cfung89/embrace.nvim.git || true
 git clone git@github.com:cfung89/surf.nvim.git || true
-git clone git@github.com:cfung89/cmd-macro.nvim.git || true
+git clone git@github.com:cfung89/cmd-macro.nvim.git cmdmacro.nvim || true
 
 # Install go_tmux_sessionizer
 cd \$HOME/Github

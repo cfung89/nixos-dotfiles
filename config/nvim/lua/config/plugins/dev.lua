@@ -23,9 +23,11 @@ return {
 		dir = "~/Github/nvim_plugins/cmdmacro.nvim",
 		config = function()
 			require("cmdmacro").setup({
+				default_terminal = "Bottom",
 				terminals = {
 					Left = { width = function() return math.floor(0.2 * vim.o.columns) end},
 					Right = { width = function() return math.floor(0.5 * vim.o.columns) end},
+					Bottom = { height = function() return math.floor(0.4 * vim.o.lines) end},
 				},
 				macros = {
 					{
@@ -41,17 +43,19 @@ return {
 					{
 						name = "git_diff",
 						keymap = "<leader>gd",
-						command = "git diff"
+						command = "git diff",
+						interactive = true
 					},
 					{
 						name = "git_diff_staged",
 						keymap = "<leader>gds",
-						command = "git diff --staged"
+						command = "git diff --staged",
+						interactive = true
 					},
 					{
 						name = "git_commit",
 						keymap = "<leader>gc",
-						command = "git commit -m ",
+						command = "git commit -m \"",
 						interactive = true
 					},
 				},

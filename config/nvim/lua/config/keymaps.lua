@@ -1,7 +1,5 @@
 vim.g.mapleader = " "
 
--- vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
-
 -- Yank
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set({ "n" }, "<leader>Y", [["+Y]])
@@ -19,12 +17,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<leader>rc", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])
 
 -- Editing
-vim.keymap.set("i", "<C-BS>", "<C-w>")
-
--- Execute
-vim.keymap.set("n", "<leader>xx", "<cmd>source %<CR>") -- execute file
-vim.keymap.set("n", "<leader>xl", ":.lua<CR>")         -- execute current line
-vim.keymap.set("v", "<leader>x", ":lua<CR>")
+vim.keymap.set("n", "<leader>vs", "<cmd>vsplit<CR>")
 
 -- Oil plugin
 vim.keymap.set("n", "-", "<cmd>Oil<CR>")
