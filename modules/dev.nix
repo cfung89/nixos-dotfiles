@@ -8,6 +8,7 @@
     docker-compose
     gcc
     go
+    gnumake
     gradle
     jdk21
     python3
