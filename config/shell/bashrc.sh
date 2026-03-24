@@ -79,6 +79,13 @@ tms_goto() {
     fi
 }
 
+tms_goto_current() {
+    DEST=$(tms -g .)
+    if [ -d "$DEST" ]; then
+        cd "$DEST"
+    fi
+}
+
 # aliases
 alias 'cd..'='cd_up'
 alias 'ns'='ns_up'
@@ -86,3 +93,4 @@ alias 'ns'='ns_up'
 # keybinds
 bind '"\C-f":"tms\n"'
 bind '"\C-g":"tms_goto\n"'
+bind '"\C-b":"tms_goto_current\n"'
