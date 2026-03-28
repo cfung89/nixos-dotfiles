@@ -32,7 +32,6 @@ set.colorcolumn = "80"
 set.swapfile = true
 set.termguicolors = true -- for bufferline
 
-
 set.signcolumn = "yes:1"
 
 vim.o.winborder = "rounded"
