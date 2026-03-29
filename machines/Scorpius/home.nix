@@ -1,7 +1,6 @@
 { config, pkgs, isWSL, ... }:
 
-let flameshot-wlr = pkgs.flameshot.override { enableWlrSupport = true; };
-in {
+{
   imports = [
     ../../common/home.nix
     ../../modules/sway.nix
@@ -11,10 +10,11 @@ in {
 
   home.packages = [
     pkgs.discord
-    flameshot-wlr
     pkgs.ghostty
+    pkgs.grim
     pkgs.obsidian
     pkgs.signal-desktop
+    pkgs.slurp
     pkgs.rofi-wayland
     pkgs.rofi-calc
     pkgs.libqalculate

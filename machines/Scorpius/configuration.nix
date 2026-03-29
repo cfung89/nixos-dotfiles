@@ -1,9 +1,9 @@
 {
-config,
-lib,
-pkgs,
-isWSL,
-...
+  config,
+  lib,
+  pkgs,
+  isWSL,
+  ...
 }:
 
 {
@@ -44,17 +44,6 @@ isWSL,
         };
       }
     ];
-  };
-
-  # Settings for flameshot
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-gtk
-    ];
-    config.common.default = "*";
-    configPackages = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
   # Audio
@@ -100,6 +89,7 @@ isWSL,
     XWAYLAND_NO_GLAMOR = 1;
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+    XDG_CURRENT_DESKTOP = "sway";
   };
 
   environment.systemPackages = with pkgs; [

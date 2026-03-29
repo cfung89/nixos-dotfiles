@@ -1,24 +1,26 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
-let mod = "Mod4";
-in {
+let
+  mod = "Mod4";
+in
+{
   wayland.windowManager.sway = {
     enable = true;
     extraOptions = [ "--unsupported-gpu" ];
     config = {
       modifier = mod;
-      bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+      bars = [ { command = "${pkgs.waybar}/bin/waybar"; } ];
       terminal = "ghostty";
       startup = [ ];
-      input = { "*" = { xkb_numlock = "enabled"; }; };
-      window = {
-        border = 1;
-        titlebar = false;
-        commands = [{
-          criteria.app_id = "flameshot";
-          command =
-            "border pixel 0, floating enable, fullscreen disable, move absolute position 0 0";
-        }];
+      input = {
+        "*" = {
+          xkb_numlock = "enabled";
+        };
       };
       gaps = {
         inner = 10;
@@ -35,39 +37,62 @@ in {
           scale = "1.0";
         };
       };
-      workspaceOutputAssign = let
-        first = "DP-2";
-        second = "DP-3";
-      in [
-        {
-          output = first;
-          workspace = "1";
-        }
-        {
-          output = second;
-          workspace = "2";
-        }
-        {
-          output = second;
-          workspace = "3";
-        }
-      ];
+      workspaceOutputAssign =
+        let
+          first = "DP-2";
+          second = "DP-3";
+        in
+        [
+          {
+            output = first;
+            workspace = "1";
+          }
+          {
+            output = second;
+            workspace = "2";
+          }
+          {
+            output = second;
+            workspace = "3";
+          }
+        ];
       keybindings = lib.attrsets.mergeAttrsList [
-        (lib.attrsets.mergeAttrsList (map (num:
-          let ws = toString num;
-          in {
-            "${mod}+${ws}" = "workspace ${ws}";
-            "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
-          }) [ 1 2 3 4 5 6 7 8 9 ]))
-        (lib.attrsets.concatMapAttrs (key: direction: {
-          "${mod}+${key}" = "focus ${direction}";
-          "${mod}+Shift+${key}" = "move ${direction}";
-        }) {
-          h = "left";
-          j = "down";
-          k = "up";
-          l = "right";
-        })
+        (lib.attrsets.mergeAttrsList (
+          map
+            (
+              num:
+              let
+                ws = toString num;
+              in
+              {
+                "${mod}+${ws}" = "workspace ${ws}";
+                "${mod}+Shift+${ws}" = "move container to workspace ${ws}";
+              }
+            )
+            [
+              1
+              2
+              3
+              4
+              5
+              6
+              7
+              8
+              9
+            ]
+        ))
+        (lib.attrsets.concatMapAttrs
+          (key: direction: {
+            "${mod}+${key}" = "focus ${direction}";
+            "${mod}+Shift+${key}" = "move ${direction}";
+          })
+          {
+            h = "left";
+            j = "down";
+            k = "up";
+            l = "right";
+          }
+        )
         {
           # Terminal
           "${mod}+Return" = "exec --no-startup-id ${pkgs.ghostty}/bin/ghostty";
@@ -88,7 +113,7 @@ in {
           "${mod}+Shift+e" =
             "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
           "${mod}+Shift+s" =
-            "exec --no-startup-id flameshot gui -c -p ~/Documents/Screenshots";
+            "exec grim -g \"$(slurp)\" - | tee ~/Documents/Screenshots/$(date +%Y%m%d_%H%M%S).png | wl-copy";
           "${mod}+x" = "exec ${pkgs.swaylock}/bin/swaylock";
           "${mod}+c" = "exec ${pkgs.systemd}/bin/systemctl suspend";
           "${mod}+o" = "exec ${pkgs.systemd}/bin/systemctl reboot";
@@ -101,12 +126,9 @@ in {
           "${mod}+bracketleft" = "workspace prev";
 
           # Audio control
-          "XF86AudioRaiseVolume" =
-            "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+";
-          "XF86AudioLowerVolume" =
-            "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-";
-          "XF86AudioMute" =
-            "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+";
+          "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-";
+          "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
           # Mic control
           "${mod}+XF86AudioRaiseVolume" =
