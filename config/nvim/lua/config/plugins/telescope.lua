@@ -24,7 +24,7 @@ return {
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags)
 			vim.keymap.set("n", "<leader>fn", function()
 				builtin.find_files({
-					cwd = os.getenv("HOME") .. "/Documents/notes",
+					cwd = os.getenv("HOME") .. "/Documents/Personal/notes",
 					hidden = true,
 					no_ignore = false,
 				})
