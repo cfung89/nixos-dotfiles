@@ -113,7 +113,7 @@ in
           "${mod}+Shift+e" =
             "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
           "${mod}+Shift+s" =
-            "exec grim -g \"$(slurp)\" - | tee ~/Documents/Screenshots/$(date +%Y%m%d_%H%M%S).png | wl-copy";
+            "exec grim -g \"$(slurp)\" - | tee ~/Screenshots/$(date +%Y%m%d_%H%M%S).png | wl-copy";
           "${mod}+x" = "exec ${pkgs.swaylock}/bin/swaylock";
           "${mod}+c" = "exec ${pkgs.systemd}/bin/systemctl suspend";
           "${mod}+o" = "exec ${pkgs.systemd}/bin/systemctl reboot";

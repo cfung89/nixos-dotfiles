@@ -6,28 +6,14 @@ return {
 		end,
 	},
 	{
-		dir = "~/Github/nvim_plugins/surf.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-		config = function()
-			require("surf").setup({
-				default_engine = "DuckDuckGo",
-				engines = {
-					Elixir = { bang = "!ex", url = "https://hexdocs.pm/elixir/search.html?q=%s" },
-					GoogleScholar = { bang = "!gs", url = "https://scholar.google.com/scholar?q=%s&hl=en" },
-					Golang = { bang = "!go", url = "https://pkg.go.dev/search?limit=25&m=package&q=%s" },
-				}
-			})
-		end,
-	},
-	{
 		dir = "~/Github/nvim_plugins/cmdmacro.nvim",
 		config = function()
 			require("cmdmacro").setup({
 				default_terminal = "Bottom",
 				terminals = {
-					Left = { width = function() return math.floor(0.2 * vim.o.columns) end},
-					Right = { width = function() return math.floor(0.5 * vim.o.columns) end},
-					Bottom = { height = function() return math.floor(0.4 * vim.o.lines) end},
+					Left = { width = function() return math.floor(0.2 * vim.o.columns) end },
+					Right = { width = function() return math.floor(0.5 * vim.o.columns) end },
+					Bottom = { height = function() return math.floor(0.4 * vim.o.lines) end },
 				},
 				macros = {
 					{
@@ -59,10 +45,34 @@ return {
 						interactive = true
 					},
 				},
-				editor = { keymaps = { quit = { "q" } } }
+				-- editor = { keymaps = { quit = { "q" } } }
 			})
 		end,
 	},
+	{
+		dir = "~/Github/nvim_plugins/vibes.nvim",
+		config = function()
+			require("vibes").setup({
+				api = {
+					key = vim.fn.stdpath("config") .. "/lua/config/plugins/.env"
+				}
+			})
+		end,
+	},
+	-- {
+	-- 	dir = "~/Github/nvim_plugins/surf.nvim",
+	-- 	dependencies = { "nvim-telescope/telescope.nvim" },
+	-- 	config = function()
+	-- 		require("surf").setup({
+	-- 			default_engine = "DuckDuckGo",
+	-- 			engines = {
+	-- 				Elixir = { bang = "!ex", url = "https://hexdocs.pm/elixir/search.html?q=%s" },
+	-- 				GoogleScholar = { bang = "!gs", url = "https://scholar.google.com/scholar?q=%s&hl=en" },
+	-- 				Golang = { bang = "!go", url = "https://pkg.go.dev/search?limit=25&m=package&q=%s" },
+	-- 			}
+	-- 		})
+	-- 	end,
+	-- },
 	-- {
 	-- 	dir = "~/Github/nvim_plugins/umple.nvim",
 	-- 	config = function()
