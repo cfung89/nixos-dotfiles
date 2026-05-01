@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-# Set up SSH key with Github
+# Set up SSH key with GitHub
 echo "Enter your GitHub email address:"
 read -r email
 if [ ! -f ~/.ssh/id_github ]; then
@@ -15,7 +15,7 @@ ssh-add ~/.ssh/id_github
 echo "-------------------------------------------------------"
 cat ~/.ssh/id_github.pub
 echo "-------------------------------------------------------"
-echo "Add the key to Github: https://github.com/settings/keys"
+echo "Add the key to GitHub: https://github.com/settings/keys"
 echo "-------------------------------------------------------"
 
 until [[ "$yn" == "y" || "$yn" == "Y" ]]; do
@@ -32,14 +32,14 @@ if [ ! -d \"nixos-dotfiles\" ]; then
 fi
 
 # Install personal Neovim plugins
-mkdir -p \$HOME/Github/nvim_plugins
-cd \$HOME/Github/nvim_plugins
+mkdir -p \$HOME/Code/nvim_plugins
+cd \$HOME/Code/nvim_plugins
 git clone git@github.com:cfung89/embrace.nvim.git || true
 git clone git@github.com:cfung89/surf.nvim.git || true
 git clone git@github.com:cfung89/cmd-macro.nvim.git cmdmacro.nvim || true
 
 # Install go_tmux_sessionizer
-cd \$HOME/Github
+cd \$HOME/Code
 git clone git@github.com:cfung89/go_tmux_sessionizer.git || true
 cd go_tmux_sessionizer
 go build -o tms .
