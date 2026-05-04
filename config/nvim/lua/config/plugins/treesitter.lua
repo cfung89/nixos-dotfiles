@@ -3,6 +3,7 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = { "BufReadPost", "BufNewFile" },
+		commit = "cf12346",
 		config = function()
 			vim.api.nvim_create_autocmd("FileType", {
 				pattern = "*",
