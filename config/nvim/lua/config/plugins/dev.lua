@@ -1,12 +1,12 @@
 return {
 	{
-		dir = "~/Github/nvim_plugins/embrace.nvim",
+		dir = "~/Code/nvim_plugins/embrace.nvim",
 		config = function()
 			require("embrace").setup()
 		end,
 	},
 	{
-		dir = "~/Github/nvim_plugins/cmdmacro.nvim",
+		dir = "~/Code/nvim_plugins/cmdmacro.nvim",
 		config = function()
 			require("cmdmacro").setup({
 				default_terminal = "Bottom",
@@ -50,7 +50,7 @@ return {
 		end,
 	},
 	{
-		dir = "~/Github/nvim_plugins/vibes.nvim",
+		dir = "~/Code/nvim_plugins/vibes.nvim",
 		config = function()
 			require("vibes").setup({
 				api = {
@@ -60,7 +60,7 @@ return {
 		end,
 	},
 	-- {
-	-- 	dir = "~/Github/nvim_plugins/surf.nvim",
+	-- 	dir = "~/Code/nvim_plugins/surf.nvim",
 	-- 	dependencies = { "nvim-telescope/telescope.nvim" },
 	-- 	config = function()
 	-- 		require("surf").setup({
@@ -74,7 +74,7 @@ return {
 	-- 	end,
 	-- },
 	-- {
-	-- 	dir = "~/Github/nvim_plugins/umple.nvim",
+	-- 	dir = "~/Code/nvim_plugins/umple.nvim",
 	-- 	config = function()
 	-- 		require("umple").setup({})
 	-- 	end,
