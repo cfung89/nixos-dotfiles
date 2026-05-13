@@ -17,14 +17,26 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    extraModprobeConfig = ''
+      options iwlwifi power_save=0
+      options iwlmvm power_scheme=1
+      options iwlwifi bt_coex_active=0
+    '';
   };
 
   services.seatd.enable = true;
   security.pam.services.swaylock = { };
 
+  powerManagement.enable = true;
+
   # Networking
-  networking.hostName = "Scorpius";
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "Scorpius";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
+  };
 
   # Printing (CUPS)
   services.printing = {
@@ -66,11 +78,20 @@
   services.xserver.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  virtualisation.virtualbox.host = {
+    enable = true;
+    # enableExtensionPack = true;
+  };
+  users.extraGroups.vboxusers.members = [ "cyrus" ];
+
+  hardware = {
+    nvidia-container-toolkit.enable = true;
+    nvidia = {
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 
   services.greetd = {
@@ -93,6 +114,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    nvidia-container-toolkit
     libreoffice
     xorg.xcursorthemes
   ];

@@ -4,6 +4,7 @@
   # programs.jdk = { enable = true; };
   home.packages = with pkgs; [
     cargo
+    cmake
     clang-tools
     docker-compose
     gcc

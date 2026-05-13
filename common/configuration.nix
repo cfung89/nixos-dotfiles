@@ -1,20 +1,33 @@
-{ config, lib, pkgs, isWSL, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  isWSL,
+  ...
+}:
 
 {
   nixpkgs.config.allowUnfree = true;
 
   security.polkit.enable = true;
   programs.dconf.enable = true;
-  programs.nix-ld.enable = true;
   services.dbus.enable = true;
   hardware.graphics.enable = true;
+  programs.nix-ld.enable = true;
 
   time.timeZone = "America/Montreal";
 
   # User
   users.users.cyrus = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "input" "seat" "docker" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "input"
+      "seat"
+      "docker"
+    ];
     packages = with pkgs; [ tree ];
   };
 
@@ -64,8 +77,10 @@
     };
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "25.05";
 }
-
