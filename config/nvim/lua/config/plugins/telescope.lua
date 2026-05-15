@@ -29,6 +29,13 @@ return {
 					no_ignore = false,
 				})
 			end)
+			vim.keymap.set("n", "<leader>fo", function()
+				builtin.find_files({
+					cwd = os.getenv("HOME") .. "/Documents",
+					hidden = true,
+					no_ignore = false,
+				})
+			end)
 			vim.keymap.set("n", "<leader>fc", function()
 				builtin.find_files({
 					cwd = os.getenv("HOME") .. "/nixos-dotfiles",

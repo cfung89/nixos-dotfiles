@@ -1,4 +1,9 @@
-{ config, pkgs, isWSL, ... }:
+{
+  config,
+  pkgs,
+  isWSL,
+  ...
+}:
 
 let
   dotfiles = "${config.home.homeDirectory}/nixos-dotfiles/config";
@@ -13,8 +18,12 @@ let
     rofi = "rofi";
   };
   targetHost = if isWSL then "Perseus" else "Scorpius";
-in {
-  imports = [ ../modules/shell.nix ../modules/dev.nix ];
+in
+{
+  imports = [
+    ../modules/shell.nix
+    ../modules/dev.nix
+  ];
 
   home.username = "cyrus";
   home.homeDirectory = "/home/cyrus";
@@ -31,8 +40,7 @@ in {
   };
 
   home.shellAliases = {
-    nrs =
-      "cd ~/nixos-dotfiles/ && ./add && sudo nixos-rebuild switch --flake ~/nixos-dotfiles#${targetHost}";
+    nrs = "cd ~/nixos-dotfiles/ && ./add && sudo nixos-rebuild switch --flake ~/nixos-dotfiles#${targetHost}";
   };
 
   home.packages = [
