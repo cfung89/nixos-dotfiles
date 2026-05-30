@@ -12,7 +12,6 @@
   security.polkit.enable = true;
   programs.dconf.enable = true;
   services.dbus.enable = true;
-  hardware.graphics.enable = true;
   programs.nix-ld.enable = true;
 
   time.timeZone = "America/Montreal";

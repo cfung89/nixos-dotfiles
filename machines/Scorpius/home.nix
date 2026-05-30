@@ -29,7 +29,15 @@
       "--enable-features=UseOzonePlatform"
       "--ozone-platform=wayland"
       "--disable-features=WaylandWpColorManagerV1"
+      "--ignore-gpu-blocklist"
+      "--enable-gpu-rasterization"
+      "--enable-zero-copy"
+      "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,AcceleratedVideoEncoder"
     ];
+  };
+
+  home.sessionVariables = {
+    LIBVA_DRIVER_NAME = "iHD";
   };
 
   programs.waybar.enable = true;

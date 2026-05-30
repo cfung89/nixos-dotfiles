@@ -55,6 +55,10 @@ in
             output = second;
             workspace = "3";
           }
+          {
+            output = second;
+            workspace = "4";
+          }
         ];
       keybindings = lib.attrsets.mergeAttrsList [
         (lib.attrsets.mergeAttrsList (

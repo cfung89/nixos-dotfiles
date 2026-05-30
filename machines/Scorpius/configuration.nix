@@ -27,6 +27,14 @@
   services.seatd.enable = true;
   security.pam.services.swaylock = { };
 
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      nvidia-vaapi-driver
+    ];
+  };
+
   powerManagement.enable = true;
 
   # Networking
@@ -91,6 +99,7 @@
       powerManagement.enable = true;
       open = false;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+      # Can also set up NVIDIA PRIME (offloading, intense applications only to the GPU)
     };
   };
 
@@ -101,6 +110,19 @@
         command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd 'sway --unsupported-gpu'";
         user = "cyrus";
       };
+    };
+  };
+
+  systemd.services.greetd = {
+    serviceConfig = {
+      Type = "idle";
+      TTYPath = "/dev/tty1";
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "journal";
     };
   };
 
